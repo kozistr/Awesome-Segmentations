@@ -1,4 +1,4 @@
-# image-segmentation-tensorflow
+# Awesome-Segmentation
 Lots of Image Segmentation implements with Tensorflow
 
 ## Prerequisites
