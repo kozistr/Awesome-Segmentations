@@ -1,5 +1,7 @@
 # Awesome-Segmentation
-Lots of Image Segmentation implements with Tensorflow
+Lots of Image Segmentation Implements with Tensorflow
+
+**Highly inspired by [HERE](https://meetshah1995.github.io/semantic-segmentation/deep-learning/pytorch/visdom/2017/06/01/semantic-segmentation-over-the-years.html)**
 
 ## Prerequisites
 * python 3.x
@@ -26,16 +28,18 @@ Lots of Image Segmentation implements with Tensorflow
 * SegNet
 * U-Net
 * FC-DenseNet
-* E/Link-Net
+* ENet
+* LinkNet
 * RefineNet
 * PSPNet
-* Mask-RCNN
+* Mask R-CNN
 * DecoupledNet
 * GAN-SS
+* G-FRNet
 
 ## DataSets
 Now supporting(?) DataSets are... (code is in /datasets.py)
-* MSCOCO
+* ~~MSCOCO~~
 
 ## Repo Tree
 ```
@@ -45,9 +49,7 @@ Now supporting(?) DataSets are... (code is in /datasets.py)
 │    │     ├── train_xxx.png
 │    │     └── train_xxx.png
 │    ├── model  (model)
-│    │     ├── checkpoint
-│    │     ├── ...
-│    │     └── xxx.ckpt
+│    │     └── model.txt (google-drive link for pre-trained model)
 │    ├── xxx_model.py (model)
 │    ├── xxx_train.py (trainer)
 │    ├── xxx_tb.png   (Tensor-Board result)
@@ -57,10 +59,30 @@ Now supporting(?) DataSets are... (code is in /datasets.py)
 └── datasets.py       (DataSet loader)
 ```
 
+## Pre-Trained Models
+
+Here's a **google drive link**. You can download pre-trained models from [~~here~~]() !
+
+## Papers & Codes
+
+*Name* | *Summary* | *Paper* | *Code*
+:---: | :---: | :---: | :---:
+**FCN** | *Fully Convolutional Networks for Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1411.4038) |
+*SegNet* | *A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation* | [[arXiv]](https://arxiv.org/abs/1511.00561) |
+*U-Net* | *Convolutional Networks for Biomedical Image Segmentation* | [[arXiv]](https://arxiv.org/abs/1505.04597) | 
+**FC-DenseNet** | *The One Hundred Layers Tiramisu: Fully Convolutional DenseNets for Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1611.09326) |
+**ENet** | *A Deep Neural Network Architecture for Real-Time Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1606.02147) |
+**LinkNet** | *Exploiting Encoder Representations for Efficient Semantic Segmentation* | [[arXiv]](Exploiting Encoder Representations for Efficient Semantic Segmentation) |
+**Mask R-CNN** | *Mask R-CNN* | [[arXiv]](https://arxiv.org/abs/1703.06870) |
+**PSPNet** | *Pyramid Scene Parsing Network* | [[arXiv]](https://arxiv.org/abs/1612.01105) |
+**RefineNet** | *Multi-Path Refinement Networks for High-Resolution Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1611.06612) |
+**G-FRNet** | *Gated Feedback Refinement Network for Dense Image Labeling* | [[CVPR2017]](http://www.cs.umanitoba.ca/~ywang/papers/cvpr17.pdf) |
+**DecoupledNet** | *Decoupled Deep Neural Network for Semi-supervised Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1506.04924) |
+**GAN-SS** | *Semi and Weakly Supervised Semantic Segmentation Using Generative Adversarial Network* | [[arXiv]](https://arxiv.org/abs/1703.09695) |
+
 ## To-Do
 1. Implement FCN
 2. Implement U-NET
-3. -
 
 ## ETC
 
