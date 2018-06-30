@@ -38,8 +38,11 @@ Lots of Image Segmentation Implements with Tensorflow
 * G-FRNet
 
 ## DataSets
-Now supporting(?) DataSets are... (code is in /datasets.py)
-* ~~MSCOCO~~
+* ``MS COCO 2017`` DataSet will be used!
+
+*DataSet* | *Train* | *Validate* | *Test* | *Disk*
+:---: | :---: | :---: | :---: | :---: |
+**MS COCO 2017** | 118287 | 5000 | 40670 | ``26.3GB``
 
 ## Repo Tree
 ```
