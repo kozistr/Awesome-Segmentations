@@ -75,7 +75,7 @@ Here's a **google drive link**. You can download pre-trained models from [~~here
 *U-Net* | *Convolutional Networks for Biomedical Image Segmentation* | [[arXiv]](https://arxiv.org/abs/1505.04597) | 
 **FC-DenseNet** | *The One Hundred Layers Tiramisu: Fully Convolutional DenseNets for Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1611.09326) |
 **ENet** | *A Deep Neural Network Architecture for Real-Time Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1606.02147) |
-**LinkNet** | *Exploiting Encoder Representations for Efficient Semantic Segmentation* | [[arXiv]](Exploiting Encoder Representations for Efficient Semantic Segmentation) |
+**LinkNet** | *Exploiting Encoder Representations for Efficient Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1707.03718) |
 **Mask R-CNN** | *Mask R-CNN* | [[arXiv]](https://arxiv.org/abs/1703.06870) |
 **PSPNet** | *Pyramid Scene Parsing Network* | [[arXiv]](https://arxiv.org/abs/1612.01105) |
 **RefineNet** | *Multi-Path Refinement Networks for High-Resolution Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1611.06612) |
