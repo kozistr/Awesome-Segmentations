@@ -67,16 +67,23 @@ class DataSetLoader:
     @staticmethod
     def img_scaling(img, scale='0,1'):
         if scale == '0,1':
-            img /= 255.
+            try:
+                img /= 255.
+            except TypeError:  # ufunc 'true divide' output ~
+                img = np.true_divide(img, 255.0, casting='unsafe')
         elif scale == '-1,1':
-            img = (img / 127.5) - 1.
+            try:
+                img = (img / 127.5) - 1.
+            except TypeError:
+                img = np.true_divide(img, 127.5, casting='unsafe') - 1.
         else:
-            raise ValueError("[-] Only '0,1' or '-1,1' please")
+            raise ValueError("[-] Only '0,1' or '-1,1' please - (%s)" % scale)
+
         return img
 
     def __init__(self, path, size=None, name='to_tfr', use_save=False, save_file_name='',
                  buffer_size=4096, n_threads=8,
-                 use_image_scaling=True, image_scale='0,1', debug=True):
+                 use_image_scaling=True, image_scale='0,1', img_save_method=cv2.INTER_LINEAR, debug=True):
 
         self.op = name.split('_')
         self.debug = debug
@@ -120,8 +127,8 @@ class DataSetLoader:
         self.raw_data = np.ndarray([], dtype=np.uint8)  # (N, H * W * C)
 
         if self.debug:
-            print("[*[ Detected Path            is [%s]" % self.path)
-            print("[*[ Detected File Extension  is [%s]" % self.file_ext)
+            print("[*] Detected Path            is [%s]" % self.path)
+            print("[*] Detected File Extension  is [%s]" % self.file_ext)
             print("[*] Detected First File Name is [%s] (%d File(s))" % (self.file_names[0], len(self.file_names)))
 
         self.types = ('img', 'tfr', 'h5', 'npy')  # Supporting Data Types
@@ -138,6 +145,8 @@ class DataSetLoader:
             assert chk_src and chk_dst
         except AssertionError:
             raise AssertionError("[-] Invalid Operation Types (%s, %s) :(" % (self.op_src, self.op_dst))
+
+        self.img_save_method = img_save_method
 
         if self.op_src == self.types[0]:
             self.load_img()
@@ -181,17 +190,17 @@ class DataSetLoader:
                 raise NotImplementedError("[-] Not Supported Type :(")
 
         self.use_image_scaling = use_image_scaling
-        self.image_scale = image_scale
+        self.img_scale = image_scale
 
         if self.use_image_scaling:
-            self.raw_data = self.img_scaling(self.raw_data, self.image_scale)
+            self.raw_data = self.img_scaling(self.raw_data, self.img_scale)
 
     def load_img(self):
         self.raw_data = np.zeros((len(self.file_list), self.height * self.width * self.channel),
                                  dtype=np.uint8)
 
         for i, fn in tqdm(enumerate(self.file_names)):
-            self.raw_data[i] = self.get_img(fn, (self.height, self.width)).flatten()
+            self.raw_data[i] = self.get_img(fn, (self.height, self.width), self.img_save_method).flatten()
             if self.debug:  # just once
                 print("[*] Image Shape   : ", self.raw_data[i].shape)
                 print("[*] Image Size    : ", self.raw_data[i].size)
@@ -748,7 +757,9 @@ class Div2KDataSet:
 
     def __init__(self, hr_height=384, hr_width=384, lr_height=96, lr_width=96, channel=3,
                  use_split=False, split_rate=0.1, random_state=42, n_threads=8,
-                 ds_path=None, ds_name=None, use_save=False, save_type='to_h5', save_file_name=None):
+                 ds_path=None, ds_name=None, use_img_scale=True,
+                 ds_hr_path=None, ds_lr_path=None,
+                 use_save=False, save_type='to_h5', save_file_name=None):
 
         """
         # General Settings
@@ -767,6 +778,9 @@ class Div2KDataSet:
         # DataSet Option
         :param ds_path: DataSet's Path, default None
         :param ds_name: DataSet's Name, default None
+        :param use_img_scale: using img scaling?
+        :param ds_hr_path: DataSet High Resolution path
+        :param ds_lr_path: DataSet Low Resolution path
         :param use_save: saving into another file format
         :param save_type: file format to save
         :param save_file_name: file name to save
@@ -791,13 +805,16 @@ class Div2KDataSet:
         """
         self.ds_path = ds_path
         self.ds_name = ds_name
-        self.ds_hr_path = self.ds_path + "/DIV2K_train_HR/"
-        self.ds_lr_path = self.ds_path + "/DIV2K_train_LR_bicubic/" + self.ds_name + "/"
+        self.ds_hr_path = ds_hr_path
+        self.ds_lr_path = ds_lr_path
 
         try:
             assert self.ds_path
         except AssertionError:
-            raise AssertionError("[-] DIV2K DataSet Path is required!")
+            try:
+                assert self.ds_hr_path and self.ds_lr_path
+            except AssertionError:
+                raise AssertionError("[-] DataSet's path is required!")
 
         self.use_save = use_save
         self.save_type = save_type
@@ -806,27 +823,37 @@ class Div2KDataSet:
         try:
             if self.use_save:
                 assert self.save_file_name
+            else:
+                self.save_file_name = ""
         except AssertionError:
             raise AssertionError("[-] save-file/folder-name is required!")
 
         self.n_images = 800
         self.n_images_val = 100
 
+        self.use_img_scaling = use_img_scale
+
+        if self.ds_path:  # like .h5 or .tfr
+            self.ds_hr_path = self.ds_path + "/DIV2K_train_HR/"
+            self.ds_lr_path = self.ds_hr_path  # self.ds_path + "/DIV2K_train_LR_bicubic/" + self.ds_name + "/"
+
         self.hr_images = DataSetLoader(path=self.ds_hr_path,
                                        size=self.hr_shape,
                                        use_save=self.use_save,
                                        name=self.save_type,
-                                       save_file_name=self.save_file_name,
-                                       use_image_scaling=True,
-                                       image_scale='-1,1').raw_data  # numpy arrays
+                                       save_file_name=self.save_file_name + "-hr.h5",
+                                       use_image_scaling=self.use_img_scaling,
+                                       image_scale='-1,1',
+                                       img_save_method=cv2.INTER_LINEAR).raw_data  # numpy arrays
 
         self.lr_images = DataSetLoader(path=self.ds_lr_path,
                                        size=self.lr_shape,
                                        use_save=self.use_save,
                                        name=self.save_type,
-                                       save_file_name=self.save_file_name,
-                                       use_image_scaling=True,
-                                       image_scale='-1,1').raw_data  # numpy arrays
+                                       save_file_name=self.save_file_name + "-lr.h5",
+                                       use_image_scaling=self.use_img_scaling,
+                                       image_scale='-1,1',
+                                       img_save_method=cv2.INTER_CUBIC).raw_data  # numpy arrays
 
 
 class UrbanSoundDataSet:
