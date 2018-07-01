@@ -1,3 +1,3 @@
-Anything about GAN, welcome :
+Anything about Segmentations, welcome :
 
-For example, SOTA GANs or not-yet-implemented GANs or anything :) Feel free to leave any PRs or Issues.
+For example, SOTA Segmentations or not-yet-implemented Segmentations or anything :) Feel free to leave any PRs or Issues.
