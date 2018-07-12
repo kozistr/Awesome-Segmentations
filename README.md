@@ -1,5 +1,5 @@
 # Awesome-Segmentation
-Lots of Image Segmentation Implementations with Tensorflow
+Lots of Image Semantic Segmentation Implementations with **Keras**
 
 **Highly inspired by [HERE](https://meetshah1995.github.io/semantic-segmentation/deep-learning/pytorch/visdom/2017/06/01/semantic-segmentation-over-the-years.html)**
 
