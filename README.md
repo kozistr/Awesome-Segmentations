@@ -5,7 +5,8 @@ Lots of Image Semantic Segmentation Implementations with **Keras**
 
 ## Prerequisites
 * python 3.x
-* tensorflow 1.x
+* tensorflow 1.9
+* keras 2.x
 * numpy
 * scipy (some features are about to **deprecated**, they'll be replaced)
 * scikit-image
