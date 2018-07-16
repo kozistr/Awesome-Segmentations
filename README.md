@@ -8,10 +8,8 @@ Lots of Image Semantic Segmentation Implementations with **Keras**
 * tensorflow 1.9
 * keras 2.x
 * numpy
-* scipy (some features are about to **deprecated**, they'll be replaced)
 * scikit-image
 * opencv-python
-* pillow
 * h5py
 * tqdm
 * Internet :)

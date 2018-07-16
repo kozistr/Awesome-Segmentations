@@ -1,9 +1,7 @@
 tensorflow-gpu >= 1.8.0
 numpy
 keras
-scipy
 scikit-image
 opencv-python
-pillow
 h5py
 tqdm
