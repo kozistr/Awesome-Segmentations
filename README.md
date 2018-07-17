@@ -79,6 +79,7 @@ Here's a **google drive link**. You can download pre-trained models from [~~here
 **PSPNet** | *Pyramid Scene Parsing Network* | [[arXiv]](https://arxiv.org/abs/1612.01105) |
 **RefineNet** | *Multi-Path Refinement Networks for High-Resolution Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1611.06612) |
 **G-FRNet** | *Gated Feedback Refinement Network for Dense Image Labeling* | [[CVPR2017]](http://www.cs.umanitoba.ca/~ywang/papers/cvpr17.pdf) |
+**DeepLabv3+** | *Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation* | [[arXiv]](https://arxiv.org/abs/1802.02611) |
 **DecoupledNet** | *Decoupled Deep Neural Network for Semi-supervised Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1506.04924) |
 **GAN-SS** | *Semi and Weakly Supervised Semantic Segmentation Using Generative Adversarial Network* | [[arXiv]](https://arxiv.org/abs/1703.09695) |
 
