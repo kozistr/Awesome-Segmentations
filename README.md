@@ -86,6 +86,7 @@ Here's a **google drive link**. You can download pre-trained models from [~~here
 ## To-Do
 1. Implement FCN
 2. Implement Mask R-CNN
+3. Upload U-Net (Tuned)
 
 ## ETC
 
