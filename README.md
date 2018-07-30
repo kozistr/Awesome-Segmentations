@@ -88,6 +88,7 @@ Here's a **google drive link**. You can download pre-trained models from [~~here
 2. Implement Mask R-CNN
 3. Upload U-Net (Tuned)
 4. Upload FC-DenseNet
+5. Upload DeepLabv3+
 
 ## ETC
 
