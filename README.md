@@ -26,6 +26,7 @@ Lots of Image Semantic Segmentation Implementations with **Keras**
 * FCNet
 * SegNet
 * U-Net
+* FusionNet
 * FC-DenseNet
 * ENet
 * LinkNet
@@ -72,6 +73,7 @@ Here's a **google drive link**. You can download pre-trained models from [~~here
 **FCN** | *Fully Convolutional Networks for Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1411.4038) |
 **SegNet** | *A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation* | [[arXiv]](https://arxiv.org/abs/1511.00561) |
 **U-Net** | *Convolutional Networks for Biomedical Image Segmentation* | [[arXiv]](https://arxiv.org/abs/1505.04597) | 
+**FusionNet** | *A deep fully residual convolutional neural network for image segmentation in connectomics* | [[arXiv]](https://arxiv.org/abs/1612.05360) |
 **FC-DenseNet** | *Fully Convolutional DenseNets for Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1611.09326) |
 **ENet** | *A Deep Neural Network Architecture for Real-Time Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1606.02147) |
 **LinkNet** | *Exploiting Encoder Representations for Efficient Semantic Segmentation* | [[arXiv]](https://arxiv.org/abs/1707.03718) |
