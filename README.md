@@ -3,6 +3,8 @@ Lots of Image Semantic Segmentation Implementations in **Tensorflow/Keras**
 
 **Highly inspired by [HERE](https://meetshah1995.github.io/semantic-segmentation/deep-learning/pytorch/visdom/2017/06/01/semantic-segmentation-over-the-years.html)**
 
+**Currently, under-development :(**
+
 ## Prerequisites
 * python 3.x
 * tensorflow 1.x
